@@ -4,7 +4,7 @@ node {
   }
   stage('SonarQube Analysis') {
     withSonarQubeEnv() {
-      sh "./mvnw clean verify sonar:sonar -Dsonar.projectKey=alpha"
+      sh "./mvnw clean package verify sonar:sonar -Dsonar.projectKey=alpha"
     }
   }
 }
