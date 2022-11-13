@@ -3,7 +3,7 @@ node {
     checkout scm
   }
   stage('SonarQube Analysis') {
-    def mvn = tool '/home/vagrant/mvn';
+    def mvn = tool '/root/mvn';
     withSonarQubeEnv() {
       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=alpha"
     }
