@@ -10,6 +10,6 @@ node {
   ansiblePlaybook(
         playbook: 'ansible-playbook.yml',
         inventory: 'ansible/inventory',
-        credentialsId: 'worker-ssh',
+        credentialsId: 'base-ssh',
         colorized: true)
 }
