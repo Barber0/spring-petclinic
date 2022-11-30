@@ -4,7 +4,11 @@ node {
   }
   stage('SonarQube Analysis') {
     withSonarQubeEnv() {
-      sh "./mvnw clean package verify sonar:sonar -Dsonar.projectKey=alpha"
+      sh './mvnw clean package verify sonar:sonar -Dsonar.projectKey=alpha'
     }
   }
+  ansiblePlaybook(
+        playbook: 'ansible-playbook.yml',
+        inventory: 'ansible/inventory',
+        colorized: true)
 }

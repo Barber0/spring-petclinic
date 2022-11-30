@@ -1,0 +1,17 @@
+- hosts: worker
+  tasks:
+    - name: install softwares for java
+      apt:
+        update_cache: yes
+        name:
+          - openjdk-11-jre
+        state: present
+    - name: send jar package
+      copy:
+        src: target/spring-petclinic-2.7.3.jar
+        dest: ~/petclinc.jar
+        remote_src: false
+    - name: stop jar service
+      shell: if [ ! -z $(pgrep java) ]; then kill $(pgrep java); fi
+    - name: launch up jar
+      shell: nohup java -jar petclinc.jar &> app.log &
