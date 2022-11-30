@@ -10,6 +10,6 @@ node {
   ansiblePlaybook(
         playbook: 'ansible-playbook.yml',
         inventory: 'ansible/inventory',
-        credentialsId: '/root/.ssh/id_rsa',
+        credentialsId: 'id_rsa',
         colorized: true)
 }
